@@ -21,6 +21,8 @@ return new class extends Migration
             $table->longText('address')->nullable();
             $table->string('city')->nullable();
             $table->string('state')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
             $table->string('pincode')->nullable();           
             $table->timestamps();
         });
