@@ -28,6 +28,8 @@ class HospitalController extends Controller
 
     public function store(Request $request)
     {
+    if(env('ENABLE_CLAIMSTACK' == true)):
+
         $input = $request->all();
         $input['hospital_name'] = $request->name;
         $input['prefix_code'] = '91';
@@ -42,6 +44,14 @@ class HospitalController extends Controller
             'message' => "Hospital saved successfully!",
             'hospital' => $hospital
         ], 200);
+
+    else:
+        return response()->json([
+            'message' => "Remote create permission disabled!",
+        ], 200);
+
+
+    endif;
     }
 
     public function update(Request $request, Hospital $hospital)

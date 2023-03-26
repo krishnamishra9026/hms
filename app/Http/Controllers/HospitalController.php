@@ -74,7 +74,7 @@ class HospitalController extends AppBaseController
 
        DB::table('hospitals')->where('id',$hospital_id)->update(['uid' => 'HPS'.$hospital_id]);
 
-       $response = Http::post('http://127.0.0.1:8080/api/hospitals', [
+       $response = Http::post(env('REMOTE_HOSPITAL_CREATE_URL'), [
             'name' => $request->hospital_name, 
             'email' => $request->email, 
             'phone' => $request->phone, 
