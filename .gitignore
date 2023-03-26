@@ -15,3 +15,4 @@ yarn-error.log
 /public/assets
 !public/uploads/opd_timelines
 .idea/
+package-lock.json

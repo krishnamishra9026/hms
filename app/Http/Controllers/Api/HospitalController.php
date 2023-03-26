@@ -28,7 +28,7 @@ class HospitalController extends Controller
 
     public function store(Request $request)
     {
-    if(env('ENABLE_CLAIMSTACK' == true)):
+    if(env('ENABLE_CLAIMSTACK') == true):
 
         $input = $request->all();
         $input['hospital_name'] = $request->name;
