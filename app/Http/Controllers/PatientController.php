@@ -10,6 +10,7 @@ use App\Models\AdvancedPayment;
 use App\Models\Appointment;
 use App\Models\BedAssign;
 use App\Models\Bill;
+use App\Models\Hospital;
 use App\Models\BirthReport;
 use App\Models\DeathReport;
 use App\Models\InvestigationReport;
@@ -37,6 +38,9 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use Maatwebsite\Excel\Facades\Excel;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Hash;
+use DB;
 
 class PatientController extends AppBaseController
 {
@@ -89,6 +93,26 @@ class PatientController extends AppBaseController
         $input['status'] = isset($input['status']) ? 1 : 0;
 
         $this->patientRepository->store($input);
+
+        $id = Hospital::where('name',auth()->user()->hospital_name)->value('id');
+
+        $response = Http::post(env('REMOTE_PATIENT_CREATE_URL'), [
+            'firstname' => $request->first_name,
+            'lastname' => $request->last_name,
+            'email' => $request->email,
+            'dob' => $request->dob,
+            'phone' => $request->phone,
+            'gender' => $request->gender,
+            'password' => Hash::make($request->password),
+            'patient_current_address' => $request->address1.' '.$request->address2,
+            'patient_permanent_address' => $request->address1.' '.$request->address2,
+            'patient_current_city' => $request->city,
+            'patient_permanent_city' => $request->city,
+            'patient_current_pincode' => $request->zip,
+            'patient_permanent_pincode' => $request->zip,
+            'hms_hospital_id' => $id
+        ]);
+
         $this->patientRepository->createNotification($input);
         Flash::success(__('messages.flash.Patient_saved'));
 

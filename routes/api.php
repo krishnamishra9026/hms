@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Api\HospitalController;
+use Api\PatientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,7 @@ use Api\HospitalController;
 */
 
 Route::apiResource('hospitals', HospitalController::class);
+Route::apiResource('patients', PatientController::class);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

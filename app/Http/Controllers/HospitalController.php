@@ -84,6 +84,7 @@ class HospitalController extends AppBaseController
             'pincode' => $request->hospital_pincode, 
             'password' => Hash::make($request->password), 
             'uid' => 'HPS'.$hospital_id,
+            'hms_hospital_id' => $hospital_id,
             'hospital_by' => 'Hms'
         ]);
 
