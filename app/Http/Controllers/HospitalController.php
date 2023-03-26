@@ -15,6 +15,9 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
 use Laracasts\Flash\Flash;
+use Illuminate\Support\Facades\Http;
+use DB;
+use Illuminate\Support\Facades\Hash;
 
 class HospitalController extends AppBaseController
 {
@@ -58,6 +61,31 @@ class HospitalController extends AppBaseController
     {
         $input = $request->all();
         $this->hospitalRepository->store($input);
+
+       $hospital_id = DB::table('hospitals')->insertGetId([
+            'name' => $request->hospital_name, 
+            'email' => $request->email, 
+            'phone' => $request->phone, 
+            'city' => $request->hospital_city, 
+            'address' => $request->hospital_address, 
+            'state' => $request->hospital_state, 
+            'pincode' => $request->hospital_pincode, 
+        ]);
+
+       DB::table('hospitals')->where('id',$hospital_id)->update(['uid' => 'HPS'.$hospital_id]);
+
+       $response = Http::post('http://127.0.0.1:8080/api/hospitals', [
+            'name' => $request->hospital_name, 
+            'email' => $request->email, 
+            'phone' => $request->phone, 
+            'city' => $request->hospital_city, 
+            'address' => $request->hospital_address, 
+            'state' => $request->hospital_state, 
+            'pincode' => $request->hospital_pincode, 
+            'password' => Hash::make($request->password), 
+            'uid' => 'HPS'.$hospital_id,
+            'hospital_by' => 'Hms'
+        ]);
 
         Flash::success( __('messages.flash.hospital_saved'));
 

@@ -33,6 +33,39 @@
         </div>
     </div>
     <div class="col-md-4">
+        <div class="mb-5">
+            {{ Form::label('hospital_city', __('Hospital City').':', ['class' => 'form-label']) }}
+            <span class="required"></span>
+            {{ Form::text('hospital_city', null, ['class' => 'form-control', 'required', 'tabindex' => '1', 'placeholder' => __('Enter hospital city'), 'pattern'  => '^[a-zA-Z0-9 ]+$',  'title' => 'Hospital City Not Allowed Special Character']) }}
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="mb-5">
+            {{ Form::label('hospital_state', __('Hospital State').':', ['class' => 'form-label']) }}
+            <span class="required"></span>
+            {{ Form::text('hospital_state', null, ['class' => 'form-control', 'required', 'tabindex' => '1', 'placeholder' => __('Enter hospital state'), 'pattern'  => '^[a-zA-Z0-9 ]+$',  'title' => 'Hospital State Not Allowed Special Character']) }}
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="mb-5">
+            {{ Form::label('hospital_address', __('Hospital Address').':', ['class' => 'form-label']) }}
+            <span class="required"></span>
+            {{ Form::textarea('hospital_address', null, ['class' => 'form-control', 'rows'=>'3', 'required', 'tabindex' => '1', 'placeholder' => __('Enter hospital address'), 'pattern'  => '^[a-zA-Z0-9 ]+$',  'title' => 'Hospital Address Not Allowed Special Character']) }}
+        </div>
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="mb-5">
+            {{ Form::label('hospital_pincode', __('Hospital Pincode').':', ['class' => 'form-label']) }}
+            <span class="required"></span>
+            {{ Form::number('hospital_pincode', null, ['class' => 'form-control', 'maxlength' => '6', 'required', 'tabindex' => '1', 'placeholder' => __('Enter hospital pincode'), 'pattern'  => '^[a-zA-Z0-9 ]+$',  'title' => 'Hospital Pincode Not Allowed Special Character']) }}
+        </div>
+    </div>
+
+
+    <div class="col-md-4">
         <label class="form-label">{{ __('messages.user.password').':' }}</label>
         <span class="required"></span>
         <div class="position-relative">
