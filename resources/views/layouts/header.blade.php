@@ -29,6 +29,23 @@ $margin = 'margin-left:';
 
     <ul class="nav align-items-center flex-nowrap">
 
+
+        <li class="px-xxl-3 px-2">
+            @if(getLoggedInUser()->hasRole('Admin'))
+                <div class="d-flex {{ getLoggedInUser()->language == 'ar' ? 'hospital-preview' : 'ms-auto' }} ">
+                    @php
+ $url = url(env('REMOTE_HOSPITAL_LOGIN_URL')).base64_encode($username->email);
+@endphp
+                    <div class="d-flex align-items-stretch hospital-preview-logo">
+                        <a  class="btn btn-primary" href="{{ $url }}"
+                           class="ps-2 pe-0" target="_blank">
+                            Login to TPA
+                        </a>
+                    </div>
+                </div>
+            @endif
+        </li>
+
         <li class="px-xxl-3 px-2">
             @if(getLoggedInUser()->hasRole('Admin'))
                 <div class="d-flex {{ getLoggedInUser()->language == 'ar' ? 'hospital-preview' : 'ms-auto' }} ">
