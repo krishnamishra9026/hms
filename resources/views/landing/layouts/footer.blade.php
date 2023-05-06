@@ -21,13 +21,13 @@
                         <a href="{{ route('landing-home') }}"
                            class="text-decoration-none mb-3 d-block text-white {{ Request::is('/') ? 'footer-link-active' : '' }}">{{ __('messages.landing.home') }}</a>
                     </li>
-                    @if(getLoggedInUser() == null || !getLoggedInUser()->hasRole('Super Admin'))
+                    {{-- @if(getLoggedInUser() == null || !getLoggedInUser()->hasRole('Super Admin'))
                         <li>
                             <a href="{{ route('landing.pricing') }}"
                                class="text-decoration-none mb-3 d-block text-white {{ Request::is('pricing') ? 'footer-link-active' : '' }}">{{ __('messages.landing.pricing') }}
                             </a>
                         </li>
-                    @endif
+                    @endif --}}
                     <li>
                         <a href="{{ route('landing.contact.us') }}"
                            class="text-decoration-none mb-3 d-block text-white {{ Request::is('contact-us') ? 'footer-link-active' : '' }}">{{ __('messages.enquiry.contact') }}</a>

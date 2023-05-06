@@ -65,7 +65,7 @@
         <!-- start-plan-section -->
     @if(getLoggedInUser() == null || !getLoggedInUser()->hasRole('Super Admin'))
         <!-- start-plan-section -->
-        @include('landing.home.pricing_plan_page', ['screenFrom' => Route::currentRouteName()])
+        {{-- @include('landing.home.pricing_plan_page', ['screenFrom' => Route::currentRouteName()]) --}}
 
     @endif
     <!-- end-plan-section -->

@@ -263,9 +263,9 @@
     @if(getLoggedInUser() == null || !getLoggedInUser()->hasRole('Super Admin'))
 
         <!-- start-plan-section -->
-            <div class="mt-5">
+            {{-- <div class="mt-5">
                 @include('landing.home.pricing_plan_page', ['screenFrom' => Route::currentRouteName()])
-            </div>
+            </div> --}}
 
     @endif
     <!-- end-plan-section -->

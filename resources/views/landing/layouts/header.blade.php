@@ -42,12 +42,12 @@
                                 <a class="nav-link {{ Request::is('our-services') ? 'active' : '' }}"
                                    href="{{ route('landing.services') }}">{{ __('messages.services') }}</a>
                             </li>
-                            @if(getLoggedInUser() == null || !getLoggedInUser()->hasRole('Super Admin'))
+                            {{-- @if(getLoggedInUser() == null || !getLoggedInUser()->hasRole('Super Admin'))
                                 <li class="nav-item">
                                     <a class="nav-link {{ Request::is('pricing') ? 'active' : '' }}"
                                        href="{{ route('landing.pricing') }}">{{ __('messages.landing.pricing') }}</a>
                                 </li>
-                            @endif
+                            @endif --}}
                             <li class="nav-item">
                                 <a class="nav-link {{ Request::is('contact-us') ? 'active' : '' }}"
                                    href="{{ route('landing.contact.us') }}">{{ __('messages.enquiry.contact') }}</a>
